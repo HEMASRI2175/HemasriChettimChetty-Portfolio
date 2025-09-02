@@ -57,7 +57,7 @@ const categoryLabels = {
 
 export const Skills = () => {
   const [ref, inView] = useInView({
-    threshold: 0.3,
+    threshold: 0.1,
     triggerOnce: true
   });
 
@@ -72,26 +72,26 @@ export const Skills = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.1
       }
     }
   };
 
   const categoryVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8 }
+      transition: { duration: 0.4 }
     }
   };
 
   const skillVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 0, scale: 0.9 },
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.5 }
+      transition: { duration: 0.3 }
     }
   };
 
@@ -201,9 +201,9 @@ export const Skills = () => {
                 ].map((competency, index) => (
                   <motion.span
                     key={competency}
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
                     animate={inView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
                     whileHover={{ scale: 1.1, y: -2 }}
                     className="px-4 py-2 bg-gradient-to-r from-slate-700 to-slate-600 text-slate-300 rounded-full text-sm border border-slate-600 hover:border-blue-400/50 hover:text-white transition-all duration-300"
                   >
