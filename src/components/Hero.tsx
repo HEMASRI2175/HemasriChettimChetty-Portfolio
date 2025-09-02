@@ -685,7 +685,7 @@ export const Hero = () => {
               >
                 <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center overflow-hidden">
                   <img
-                    src="1755628337388.png"
+                    src="/profile.png"
                     alt="Chettim Chetty Hemasri"
                     className="w-full h-full object-cover rounded-full"
                   />
