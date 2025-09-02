@@ -18,11 +18,7 @@ export const personalInfo = {
     'Project Manager',
     'Research Scholar'
   ],
-  bio: `Passionate Computer Science student with expertise in Generative AI, Machine Learning, and Full-Stack Development. 
-  Currently pursuing BTech in CSE at SRM Institute with a stellar CGPA of 9.75. 
-  Proven track record in AI innovation, hackathon victories, and research publications. 
-  Dedicated to solving complex problems through cutting-edge technology and creative solutions.
-  Winner of prestigious Chancellor's Award for Excellence in Undergraduate Research 2025.`
+  bio: `Passionate Computer Science student with expertise in Generative AI, Machine Learning, and Full-Stack Development. Currently pursuing BTech in CSE at SRM Institute with a stellar CGPA of 9.75. As a Software Development Engineer Intern at Philips, I've gained hands-on experience in enterprise-grade software development and AI systems. My competitive achievements include being a National Semi-Finalist at Flipkart GRiD 7.0, selected from over 250,000 participants, and completing impactful internships at Samsung PRISM R&D Institute. I'm also part of the prestigious PwC Launchpad 4.0'25 cohort and served as a Snapchat Opinion Leader in 2024. With victories in 3 hackathons, 2 designathons, and the Datathon at Altair, combined with being honored as a Chancellor Awardee for Research, I am committed to solving complex problems through cutting-edge technology and innovation.`
 };
 
 export const experiences: Experience[] = [
@@ -208,7 +204,7 @@ export const certifications: Certification[] = [
   {
     title: 'ServiceNow Certified Application Developer',
     issuer: 'ServiceNow',
-    year: '2024'
+    year: '2025'
   },
   {
     title: 'Oracle Cloud Infrastructure 2024 Generative AI Certified Professional',
@@ -218,7 +214,7 @@ export const certifications: Certification[] = [
   {
     title: 'Oracle Cloud Infrastructure 2024 Certified Foundations Associate',
     issuer: 'Oracle',
-    year: '2024'
+    year: '2025'
   },
   {
     title: 'AWS Cloud Foundations',
@@ -243,9 +239,9 @@ export const certifications: Certification[] = [
   {
     title: 'Meta Version Control',
     issuer: 'Meta',
-    year: '2024'
+    year: '2023'
   }
-];
+]
 
 export const skills: Skill[] = [
   // Languages/Frameworks - Had experience working with:

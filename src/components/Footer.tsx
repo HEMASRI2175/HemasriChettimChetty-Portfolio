@@ -15,7 +15,7 @@ export const Footer = () => {
             className="text-center md:text-left"
           >
             <h3 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
-              Hemasri
+              Chettim Chetty Hemasri 
             </h3>
             <p className="text-slate-400 text-sm">
               Building the future with AI and innovation

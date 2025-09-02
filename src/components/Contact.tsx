@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Send, Mail, Github, Linkedin, CheckCircle } from 'lucide-react';
+import { Send, Mail, Github, Linkedin, CheckCircle, AlertCircle, Copy } from 'lucide-react';
 import { personalInfo } from '../data/portfolio';
+import emailjs from '@emailjs/browser';
 
 export const Contact = () => {
   const [ref, inView] = useInView({
@@ -19,19 +20,71 @@ export const Contact = () => {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  const [copySuccess, setCopySuccess] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('chettimchettyhemasri@gmail.com');
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy email:', err);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    
-    setTimeout(() => setSubmitted(false), 5000);
+    try {
+      // Try EmailJS first (requires setup at emailjs.com)
+      try {
+        // These would need to be replaced with actual EmailJS credentials
+        // For now, we'll skip this and go to mailto fallback
+        throw new Error('EmailJS not configured');
+        
+        /* Uncomment and configure when EmailJS is set up:
+        await emailjs.send(
+          'YOUR_SERVICE_ID',
+          'YOUR_TEMPLATE_ID',
+          {
+            from_name: formData.name,
+            from_email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+            to_email: 'chettimchettyhemasri@gmail.com'
+          },
+          'YOUR_PUBLIC_KEY'
+        );
+        */
+      } catch (emailJsError) {
+        // Fallback to mailto
+        const subject = encodeURIComponent(`Portfolio Contact: ${formData.subject}`);
+        const body = encodeURIComponent(
+          `Hi Chettim,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}\n\nBest regards,\n${formData.name}`
+        );
+        const mailtoUrl = `mailto:chettimchettyhemasri@gmail.com?subject=${subject}&body=${body}`;
+        
+        // Open default email client
+        window.open(mailtoUrl, '_self');
+      }
+      
+      // Simulate processing time
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      setIsSubmitting(false);
+      setSubmitted(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setSubmitted(false), 5000);
+      
+    } catch (err) {
+      console.error('Email Error:', err);
+      setIsSubmitting(false);
+      setError('Unable to send email automatically. Please copy the email address below and send manually.');
+      setTimeout(() => setError(''), 8000);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -226,6 +279,28 @@ export const Contact = () => {
                     </>
                   )}
                 </motion.button>
+                
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="space-y-3"
+                  >
+                    <div className="flex items-center gap-2 text-red-400 text-sm bg-red-400/10 border border-red-400/20 rounded-lg p-3">
+                      <AlertCircle size={16} />
+                      {error}
+                    </div>
+                    <motion.button
+                      onClick={copyEmail}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 transition-all duration-300 text-sm"
+                    >
+                      <Copy size={16} />
+                      {copySuccess ? 'Email Copied!' : 'Copy Email Address'}
+                    </motion.button>
+                  </motion.div>
+                )}
               </motion.form>
             </motion.div>
           </div>

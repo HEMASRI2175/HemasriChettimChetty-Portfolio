@@ -30,31 +30,31 @@ export const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 bg-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-12 bg-slate-800">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl sm:text-5xl font-bold text-white mb-6"
+            className="text-4xl sm:text-5xl font-bold text-white mb-4"
           >
             About <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Me</span>
           </motion.h2>
           
           <motion.p
             variants={itemVariants}
-            className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg text-slate-300 max-w-4xl mx-auto leading-relaxed text-justify"
           >
             {personalInfo.bio}
           </motion.p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
               icon: GraduationCap,
@@ -83,13 +83,13 @@ export const About = () => {
                 rotateY: 10,
                 boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
               }}
-              className="bg-slate-900/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-slate-600 transition-all duration-500"
+              className="bg-slate-900/50 backdrop-blur-sm border border-slate-700 rounded-xl p-5 hover:border-slate-600 transition-all duration-500"
             >
-              <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${item.gradient} mb-4`}>
+              <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${item.gradient} mb-3`}>
                 <item.icon className="text-white" size={24} />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
-              <p className="text-slate-400 leading-relaxed">{item.description}</p>
+              <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+              <p className="text-slate-400 leading-relaxed text-sm">{item.description}</p>
             </motion.div>
           ))}
         </div>
